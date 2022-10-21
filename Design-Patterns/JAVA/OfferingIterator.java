@@ -2,8 +2,6 @@ import java.util.Iterator;
 
 public class OfferingIterator extends ListIterator {
 
-	private OfferingList offeringList;  //Because the relation may not be correct
-
 	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean hasNext(Iterator iterator) {

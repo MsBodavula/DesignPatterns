@@ -1,4 +1,4 @@
-import java.util.Iterator;
+
 import java.util.Scanner;
 
 public class Facade {
@@ -7,27 +7,17 @@ public class Facade {
 
 	private Product productList;
 
-	private OfferingList offeringList;
-
 	private int selectedProduct;
-
-	private int nProductCategory;
-
-	private ClassProductList theProductList;
-
-	private Person thePerson;
 
 	private int menuType;
 
-	private String username;
-
-	private String password;
-
 	private Login login = new Login();
 
-	private boolean success;
+	private String success;
 
 	private int option;
+
+	private UserInfoItem userInfo = new UserInfoItem();
 
 	private Register register = new Register();
 
@@ -50,7 +40,7 @@ public class Facade {
 				sc.close();
 			}
 			success = login.login(userType);
-			if(success == false)
+			if(success == null)
 			{
 				System.out.println("Invalid credentials");
 				sc.close();
@@ -86,24 +76,37 @@ public class Facade {
 		System.out.println("Implementing Visitor Pattern....");
 		remind(menuType);
 		System.out.println("Implementing Iterator pattern ....");
-		if(menuType == 1)
-			productList = new Product(new ProduceProductMenu());
-		else
-			productList = new Product(new MeatProductMenu());
-		@SuppressWarnings("rawtypes")
-		Iterator iterate = (Iterator) productList.createIterator();
-		ProductIterator productIterator = new ProductIterator();
-		if(menuType == 1)
-			offeringList = new OfferingList(new ProduceProductMenu());
-		else
-		offeringList = new OfferingList(new MeatProductMenu());
-		@SuppressWarnings("rawtypes")
-		Iterator iterate2 = (Iterator) offeringList.createIterator();
-		OfferingIterator oi = new OfferingIterator();
-		while (productIterator.hasNext(iterate)) {
-			System.out.println(productIterator.Next(iterate));
-			System.out.println(oi.Next(iterate2));
+		if(menuType == 1){
+			try{
+				productList = new Product(new ProduceProductMenu());
+			}
+			catch(Exception e){
+				System.out.println("");
+			}
 		}
+		
+		else{
+			try{
+				productList = new Product(new MeatProductMenu());
+			}
+			catch(Exception e){
+				System.out.println("");
+			}
+		}
+		
+		System.out.println("Obtaining elements from Current user......");
+		userInfo.getUserProducts(success);
+		int opinio;
+		System.out.print("Want to add items (1/0)");
+		opinio = sc.nextInt();
+		if(opinio == 1)
+		{
+			System.out.println("Enter Product Name");
+			String name = sc.next();
+			userInfo.addUserProducts(success, name);
+		}
+		System.out.println("Obtaining elements from Current user......");
+		userInfo.getUserProducts(success);
 		sc.close();
 		
 	}

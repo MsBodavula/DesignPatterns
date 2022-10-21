@@ -2,10 +2,6 @@ import java.util.*;
 
 public class OfferingList {
 
-	private Trading trading;
-
-	private OfferingIterator offeringIterator;
-
 	ArrayList<String> offering = new ArrayList<>();
 
 	OfferingList(MeatProductMenu m) {

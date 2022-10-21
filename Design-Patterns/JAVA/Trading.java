@@ -1,8 +1,4 @@
 public class Trading extends Reminder {
-
-	private Product product;
-
-	private OfferingList offeringList;
 	
 	public Reminder accept(NodeVisitor nodeVisitor) {
 		System.out.println("Assignment Reminder ...");

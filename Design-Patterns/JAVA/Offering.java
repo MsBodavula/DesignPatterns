@@ -1,7 +1,5 @@
 public class Offering {
 
-	private OfferingList offeringList;
-
 	public void decideBidding() {
 		System.out.println("deciding the bidding....");
 	}

@@ -2,8 +2,6 @@ import java.util.Iterator;
 
 public class ProductIterator extends ListIterator {
 
-	private ClassProductList classProductList;
-
 	@SuppressWarnings("rawtypes")
 	public boolean hasNext(Iterator iterator) {
 		return iterator.hasNext();
